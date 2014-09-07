@@ -1,0 +1,97 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red68\green60\blue60;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl560\sa400\ql\qnatural
+
+\f0\i\fs28 \cf2 ArrayList data;
+\f1\i0 \uc0\u8232 
+\f0\i int pointer;\
+Float getNextRecord()
+\f1\i0 \uc0\u8232 
+\f0\i \{
+\f1\i0 \uc0\u8232 
+\f0\i if (data == null) \{
+\f1\i0 \uc0\u8232 
+\f0\i data = new ArrayList();
+\f1\i0 \uc0\u8232 
+\f0\i print(\'93Getting data from database\'85\'94);
+\f1\i0 \uc0\u8232 
+\f0\i XMLElement xml = new XMLElement(this, \'93https://spreadsheets.google.com/feeds/list/0AhySzEddwIC1dEtpWF9hQUhCWURZNEViUmpUeVgwdGc/1/public/basic?alt=rss\'94);
+\f1\i0 \uc0\u8232 
+\f0\i //XMLElement xml = new XMLElement(this, \'93test.xml\'94);
+\f1\i0 \uc0\u8232 
+\f0\i println(\'93DONE\'94);
+\f1\i0 \uc0\u8232 
+\f0\i DataRecord next;
+\f1\i0 \uc0\u8232 
+\f0\i int readingCount = xml.getChild(0).getChildCount();
+\f1\i0 \uc0\u8232 
+\f0\i for (int i=0; i<readingCount ;i++) \{
+\f1\i0 \uc0\u8232 
+\f0\i if(xml.getChild(0).getChild(i).getChild(\'93description\'94) != null) \{
+\f1\i0 \uc0\u8232 
+\f0\i String wholeDesc = xml.getChild(0).getChild(i).getChild(\'93description\'94).toString();
+\f1\i0 \uc0\u8232 
+\f0\i int start = wholeDesc.indexOf(\'93change:\'94)+8;
+\f1\i0 \uc0\u8232 
+\f0\i int end = wholeDesc.indexOf(\'93<\'94,start);
+\f1\i0 \uc0\u8232 
+\f0\i float change = float(wholeDesc.substring(start,end));
+\f1\i0 \uc0\u8232 
+\f0\i data.add(new Float(change));
+\f1\i0 \uc0\u8232 
+\f0\i \}
+\f1\i0 \uc0\u8232 
+\f0\i \}
+\f1\i0 \uc0\u8232 
+\f0\i pointer = data.size();
+\f1\i0 \uc0\u8232 
+\f0\i \}
+\f1\i0 \uc0\u8232 
+\f0\i if (pointer == 0) pointer = data.size();
+\f1\i0 \uc0\u8232 
+\f0\i pointer = pointer \'96 1;
+\f1\i0 \uc0\u8232 
+\f0\i return (Float)data.get(pointer);
+\f1\i0 \uc0\u8232 
+\f0\i \}\
+void rewindData()
+\f1\i0 \uc0\u8232 
+\f0\i \{
+\f1\i0 \uc0\u8232 
+\f0\i pointer = data.size();
+\f1\i0 \uc0\u8232 
+\f0\i \}\
+void printData(DataRecord next)
+\f1\i0 \uc0\u8232 
+\f0\i \{
+\f1\i0 \uc0\u8232 
+\f0\i print(next.date + \'93: \'93);
+\f1\i0 \uc0\u8232 
+\f0\i print(next.light + \'93, \'93);
+\f1\i0 \uc0\u8232 
+\f0\i print(next.stretch + \'93, \'93);
+\f1\i0 \uc0\u8232 
+\f0\i print(next.humidity + \'93, \'93);
+\f1\i0 \uc0\u8232 
+\f0\i print(next.temp + \'93\\n\'94);
+\f1\i0 \uc0\u8232 
+\f0\i \}\
+class DataRecord
+\f1\i0 \uc0\u8232 
+\f0\i \{
+\f1\i0 \uc0\u8232 
+\f0\i float light = 0;
+\f1\i0 \uc0\u8232 
+\f0\i float humidity = 0;
+\f1\i0 \uc0\u8232 
+\f0\i float temp = 0;
+\f1\i0 \uc0\u8232 
+\f0\i float stretch = 0;
+\f1\i0 \uc0\u8232 
+\f0\i String date = \'93OFFLINE\'94;
+\f1\i0 \uc0\u8232 
+\f0\i \}\
+}

@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 DroidSerif;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red68\green60\blue60;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl560\sa400\ql\qnatural
+
+\f0\fs28 \cf2 void setup()
+\f1 \uc0\u8232 
+\f0 \{
+\f1 \uc0\u8232 
+\f0 size(800,600,P2D);
+\f1 \uc0\u8232 
+\f0 loadVideo(\'93vid.mov\'94);
+\f1 \uc0\u8232 
+\f0 \}\
+void script()
+\f1 \uc0\u8232 
+\f0 \{
+\f1 \uc0\u8232 
+\f0 float next = getNextRecord().floatValue();
+\f1 \uc0\u8232 
+\f0 print(next + \'93, \'93);
+\f1 \uc0\u8232 
+\f0 delay(5000);
+\f1 \uc0\u8232 
+\f0 // \'a0setBrightness(slider1.getValue());
+\f1 \uc0\u8232 
+\f0 // \'a0setOpacity(slider2.getValue());
+\f1 \uc0\u8232 
+\f0 // \'a0setScaling(slider3.getValue());
+\f1 \uc0\u8232 
+\f0 // \'a0setVolume(slider4.getValue());\
+if(next > 15) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(8000000);
+\f1 \uc0\u8232 
+\f0 \}\
+else if (next > 10) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(5000000);
+\f1 \uc0\u8232 
+\f0 \}
+\f1 \uc0\u8232 
+\f0 else if(next > 5) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(1000000);
+\f1 \uc0\u8232 
+\f0 \}
+\f1 \uc0\u8232 
+\f0 else if(next > 0) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(500000);
+\f1 \uc0\u8232 
+\f0 \}\
+else if(next > -5) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(100000);
+\f1 \uc0\u8232 
+\f0 \}
+\f1 \uc0\u8232 
+\f0 else if(next > -10) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(50000);
+\f1 \uc0\u8232 
+\f0 \}
+\f1 \uc0\u8232 
+\f0 else if(next > -15) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(5000);
+\f1 \uc0\u8232 
+\f0 \}
+\f1 \uc0\u8232 
+\f0 else if(next > -20) \{
+\f1 \uc0\u8232 
+\f0 playVideoFrom(5);
+\f1 \uc0\u8232 
+\f0 \}\
+delay(1000);
+\f1 \uc0\u8232 
+\f0 // \'a0playAudioF
+\f1 \uc0\u8232 
+\f0 // playVideoFrom(next);
+\f1 \uc0\u8232 
+\f0 // \'a0playAudioFrom(next.temp*30);\
+\}\
+\
+\pard\pardeftab720\sl560\ql\qnatural
+\cf2 \
+}
